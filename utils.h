@@ -44,18 +44,18 @@ helper for easily checking the return value of a function
 #define ENSURE_3(func, success_msg, fail_msg)                                  \
     do {                                                                       \
         if (func()) {                                                          \
-            std::cout << "[SUCCESS] " << success_msg << std::endl;             \
+            std::cout << success_msg << std::endl;             \
         } else {                                                               \
-            std::cerr << "[FAIL] " << fail_msg << std::endl;                   \
+            std::cerr << fail_msg << std::endl;                   \
         }                                                                      \
     } while (0)
 
 #define ENSURE_4(func, success_msg, fail_msg, should_return)                   \
     do {                                                                       \
         if (func()) {                                                          \
-            std::cout << "[SUCCESS] " << success_msg << std::endl;             \
+            std::cout << success_msg << std::endl;             \
         } else {                                                               \
-            std::cerr << "[FAIL] " << fail_msg << std::endl;                   \
+            std::cerr << fail_msg << std::endl;                   \
             if (should_return)                                                 \
                 return;                                                        \
         }                                                                      \
