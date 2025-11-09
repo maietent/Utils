@@ -39,35 +39,35 @@ helper for easily checking the return value of a function
 /* START OF ENSURE */
 #define GET_MACRO(_1, _2, _3, _4, NAME, ...) NAME
 
-#define ENSURE_2(func, should_return)                                          \
-    do {                                                                       \
-        if (!func()) {                                                         \
-            if (should_return)                                                 \
-                return;                                                        \
-        }                                                                      \
+#define ENSURE_2(expr, should_return)                           \
+    do {                                                        \
+        if (!(expr)) {                                          \
+            if (should_return)                                  \
+                return;                                         \
+        }                                                       \
     } while (0)
 
-#define ENSURE_3(func, success_msg, fail_msg)                                  \
-    do {                                                                       \
-        if (func()) {                                                          \
-            std::cout << success_msg << std::endl;             \
-        } else {                                                               \
-            std::cerr << fail_msg << std::endl;                   \
-        }                                                                      \
+#define ENSURE_3(expr, success_msg, fail_msg)                   \
+    do {                                                        \
+        if (expr) {                                             \
+            std::cout << success_msg << std::endl;              \
+        } else {                                                \
+            std::cerr << fail_msg << std::endl;                 \
+        }                                                       \
     } while (0)
 
-#define ENSURE_4(func, success_msg, fail_msg, should_return)                   \
-    do {                                                                       \
-        if (func()) {                                                          \
-            std::cout << success_msg << std::endl;             \
-        } else {                                                               \
-            std::cerr << fail_msg << std::endl;                   \
-            if (should_return)                                                 \
-                return;                                                        \
-        }                                                                      \
+#define ENSURE_4(expr, success_msg, fail_msg, should_return)    \
+    do {                                                        \
+        if (expr) {                                             \
+            std::cout << success_msg << std::endl;              \
+        } else {                                                \
+            std::cerr << fail_msg << std::endl;                 \
+            if (should_return)                                  \
+                return;                                         \
+        }                                                       \
     } while (0)
 
-#define ENSURE(...)                                                            \
+#define ENSURE(...)                                             \
     GET_MACRO(__VA_ARGS__, ENSURE_4, ENSURE_3, ENSURE_2)(__VA_ARGS__)
 /* END OF ENSURE */
 
