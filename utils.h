@@ -14,12 +14,18 @@ of more stuff to add.
 #include <chrono>
 #include <cstdlib>
 #include <ctime>
-#include <format>
 #include <fstream>
 #include <iostream>
 #include <memory>
 #include <string>
 #include <vector>
+
+#if __has_include(<format>)
+#include <format>
+#else
+#include <fmt/core.h>
+using std::vformat = fmt::vformat;
+#endif
 
 /* windows */
 #ifdef _WIN32
